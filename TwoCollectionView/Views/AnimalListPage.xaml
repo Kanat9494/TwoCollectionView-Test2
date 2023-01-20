@@ -9,7 +9,173 @@
     <ContentPage.BindingContext>
         <viewModel:AnimalListViewModel />
     </ContentPage.BindingContext>
+
     <StackLayout>
+        <CollectionView
+            ItemsSource="{Binding AnimalList}">
+            <CollectionView.Header>
+                
+                    <ScrollView
+                        Orientation="Horizontal"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalScrollBarVisibility="Never">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="60"/>
+
+                        </Grid.RowDefinitions>
+                        <Label
+                                HorizontalOptions="Start"
+                                Text="Testing scroll view"
+                            Grid.Row="0"/>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Grid.Row="1">
+                            
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+
+                            <Border
+                            Stroke="Transparent"
+                            StrokeThickness="0"
+                                Margin="10">
+                                <Label
+                                Text="Scroll view"/>
+                            </Border>
+                        </StackLayout>
+                    </Grid>
+                    </ScrollView>
+            </CollectionView.Header>
+        </CollectionView>
+    </StackLayout>
+    
+    <!--<StackLayout>
         <CollectionView
             ItemsSource="{Binding ParentTestList}"
             VerticalOptions="FillAndExpand">
@@ -38,7 +204,7 @@
                                         </StackLayout>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
-                                <!--<CollectionView.Footer>
+                                --><!--<CollectionView.Footer>
                                     <StackLayout>
                                         <ActivityIndicator 
                         IsRunning="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}" 
@@ -47,7 +213,7 @@
                         WidthRequest="50"
                         HorizontalOptions="Center"/>
                                     </StackLayout>
-                                </CollectionView.Footer>-->
+                                </CollectionView.Footer>--><!--
                             </CollectionView>
                         </StackLayout>
 
@@ -65,9 +231,9 @@
                                         VerticalItemSpacing="5"
                                         Span="2"/>
                                 </CollectionView.ItemsLayout>
-                                <!--<CollectionView.ItemsLayout>
+                                --><!--<CollectionView.ItemsLayout>
                                     <LinearItemsLayout Orientation="Vertical" />
-                                </CollectionView.ItemsLayout>-->
+                                </CollectionView.ItemsLayout>--><!--
                                 <CollectionView.ItemTemplate>
                                     <DataTemplate
                                                 x:DataType="model:EntryDetails">
@@ -96,7 +262,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </StackLayout>
+    </StackLayout>-->
 
     <!--<Grid>
         <CollectionView
