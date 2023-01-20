@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TwoCollectionView.Views.AnimalListPage"
+             xmlns:viewModel="clr-namespace:TwoCollectionView.ViewModels"
+             x:DataType="viewModel:AnimalListViewModel"
+             xmlns:model="clr-namespace:TwoCollectionView.Models"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
+             Title="AnimalListPage">
+    <ContentPage.BindingContext>
+        <viewModel:AnimalListViewModel />
+    </ContentPage.BindingContext>
+
+        <!--<CollectionView
+            ItemsSource="{Binding AnimalList3}"
+            VerticalOptions="FillAndExpand"
+            RemainingItemsThreshold="1"
+                                RemainingItemsThresholdReachedCommand="{Binding Path=LoadMoreDataCommand,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}">
+            <CollectionView.Header>
+                
+                    <StackLayout
+                        >
+
+                    <CollectionView
+                        ItemsSource="{Binding AnimalList}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="model:EntryDetails">
+                                <Label
+                                    Text="{Binding Description}"
+                                    Margin="10"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                        
+                    </CollectionView>
+                    
+                    
+                </StackLayout>
+            </CollectionView.Header>
+
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                HorizontalItemSpacing="5"
+                VerticalItemSpacing="5"
+                Span="2"
+                Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="model:EntryDetails">
+                    <StackLayout>
+                        <Label
+                            Text="{Binding API}"/>
+                        <Label
+                            Text="{Binding Description}"/>
+
+                        <Label
+                            Text="{Binding Category}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            --><!--<CollectionView.Footer>
+                <StackLayout>
+                    <ActivityIndicator 
+                    IsRunning="{Binding IsLoading}" 
+                    IsVisible="{Binding IsLoading}"
+                    HeightRequest="50"         
+                    WidthRequest="50"
+                    HorizontalOptions="Center"/>
+                </StackLayout>
+            </CollectionView.Footer>--><!--
+        </CollectionView>-->
+    
+
+</ContentPage>

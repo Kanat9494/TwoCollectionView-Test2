@@ -5,77 +5,70 @@
              xmlns:viewModel="clr-namespace:TwoCollectionView.ViewModels"
              x:DataType="viewModel:AnimalListViewModel"
              xmlns:model="clr-namespace:TwoCollectionView.Models"
+             xmlns:dxcv="clr-namespace:DevExpress.Maui.CollectionView;assembly=DevExpress.Maui.CollectionView"
              Title="AnimalListPage">
     <ContentPage.BindingContext>
         <viewModel:AnimalListViewModel />
     </ContentPage.BindingContext>
 
-        <CollectionView
-            ItemsSource="{Binding AnimalList3}"
-            VerticalOptions="FillAndExpand"
-            RemainingItemsThreshold="1"
-                                RemainingItemsThresholdReachedCommand="{Binding Path=LoadMoreDataCommand,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}">
-            <CollectionView.Header>
-                
-                    <StackLayout
-                        >
-
-                    <CollectionView
-                        ItemsSource="{Binding AnimalList}">
-                        <CollectionView.ItemsLayout>
-                            <LinearItemsLayout
-                                Orientation="Horizontal"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
+    <dxcv:DXCollectionView
+        ItemsSource="{Binding AnimalList3}"
+        IsScrollBarVisible="False"
+        >
+        <dxcv:DXCollectionView.GroupDescription>
+            <dxcv:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
+        </dxcv:DXCollectionView.GroupDescription>
+        <!--<dxcv:DXCollectionView.GroupHeaderTemplate>
+            <DataTemplate>
+                <StackLayout
+                    HeightRequest="60"
+                    Orientation="Horizontal">
+                    <dxcv:DXCollectionView
+                    Orientation="Horizontal"
+                    ItemsSource="{Binding AnimalList}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Fill">
+                        <dxcv:DXCollectionView.ItemTemplate>
                             <DataTemplate
-                                x:DataType="model:EntryDetails">
+                            x:DataType="model:EntryDetails">
                                 <Label
-                                    Text="{Binding Description}"
-                                    Margin="10"/>
+                                Text="{Binding Description}"/>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                        
-                        
-                    </CollectionView>
-                    
-                    
+                        </dxcv:DXCollectionView.ItemTemplate>
+                    </dxcv:DXCollectionView>
                 </StackLayout>
-            </CollectionView.Header>
 
-        <CollectionView.ItemsLayout>
-            <GridItemsLayout
-                HorizontalItemSpacing="5"
-                VerticalItemSpacing="5"
-                Span="2"
-                Orientation="Vertical"/>
-        </CollectionView.ItemsLayout>
+            </DataTemplate>
+        </dxcv:DXCollectionView.GroupHeaderTemplate>-->
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="model:EntryDetails">
-                    <StackLayout>
-                        <Label
-                            Text="{Binding API}"/>
-                        <Label
-                            Text="{Binding Description}"/>
+        <dxcv:DXCollectionView.ItemTemplate
+            >
+            <DataTemplate
+                x:DataType="model:EntryDetails">
+                <StackLayout
+                    HeightRequest="70">
+                    <!--<Label
+                        Text="{Binding API}"/>
+                    <Label
+                        Text="{Binding Description}"/>
 
-                        <Label
-                            Text="{Binding Category}"/>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                    <Label
+                        Text="{Binding Category}"/>-->
 
-            <!--<CollectionView.Footer>
-                <StackLayout>
-                    <ActivityIndicator 
-                    IsRunning="{Binding IsLoading}" 
-                    IsVisible="{Binding IsLoading}"
-                    HeightRequest="50"         
-                    WidthRequest="50"
-                    HorizontalOptions="Center"/>
+                    <dxcv:DXCollectionView
+                        ItemsSource="{Binding Path=AnimalList,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
+                        Orientation="Horizontal">
+                        <dxcv:DXCollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    Text="{Binding API}"/>
+                            </DataTemplate>
+                        </dxcv:DXCollectionView.ItemTemplate>
+                    </dxcv:DXCollectionView>
                 </StackLayout>
-            </CollectionView.Footer>-->
-        </CollectionView>
+            </DataTemplate>
+        </dxcv:DXCollectionView.ItemTemplate>
+    </dxcv:DXCollectionView>
     
 
 </ContentPage>
