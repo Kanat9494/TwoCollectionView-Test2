@@ -7,6 +7,8 @@ public partial class AnimalListViewModel : ObservableObject
 {
     private readonly AnimalService _animalService;
     public ObservableRangeCollection<EntryDetails> AnimalList { get; set; } = new ObservableRangeCollection<EntryDetails>();
+    public ObservableRangeCollection<EntryDetails> AnimalList3 { get; set; } = new ObservableRangeCollection<EntryDetails>();
+
     public ObservableRangeCollection<ObservableRangeCollection<EntryDetails>> AnimalList2 { get; set; } = new ObservableRangeCollection<ObservableRangeCollection<EntryDetails>>();
     ParentEntryDetails test1 = new ParentEntryDetails();
     ParentEntryDetails test2 = new ParentEntryDetails();
@@ -39,6 +41,7 @@ public partial class AnimalListViewModel : ObservableObject
     private void GetAnimalList()
     {
         AnimalList.Clear();
+        AnimalList3.Clear();
         //AnimalList2.Clear();
         ParentTestList.Clear();
 
@@ -51,13 +54,15 @@ public partial class AnimalListViewModel : ObservableObject
             App.Current.Dispatcher.Dispatch(() =>
             {
                 AnimalList.ReplaceRange(_allAnimals.Take(_pageSize).ToList());
+                AnimalList3.ReplaceRange(_allAnimals.Take(_pageSize).ToList());
 
-                ParentTestList.Add(new ParentEntryDetails()
-                {
-                    ParentList = _allAnimals.Take(_pageSize).ToList(),
-                    ParentList2 = _allAnimals.Take(_pageSize).ToList(),
-                    Test = "Test text1"
-                });
+
+                //ParentTestList.Add(new ParentEntryDetails()
+                //{
+                //    ParentList = _allAnimals.Take(_pageSize).ToList(),
+                //    ParentList2 = _allAnimals.Take(_pageSize).ToList(),
+                //    Test = "Test text1"
+                //});
 
 
                 //foreach (var item in _allAnimals)
@@ -81,7 +86,7 @@ public partial class AnimalListViewModel : ObservableObject
                 //AnimalList.AddRange(AnimalList);
 
 
-
+                IsLoading = false;
                 IsBusy = false;
             });
         });
@@ -90,13 +95,13 @@ public partial class AnimalListViewModel : ObservableObject
     [ICommand]
     public async Task LoadMoreData()
     {
-        if (IsLoading) return;
+        //if (IsLoading) return;
 
         if (_allAnimals?.Count > 0)
         {
             IsLoading = true;
             await Task.Delay(2000);
-            //AnimalList.AddRange(_allAnimals.Skip(AnimalList.Count).Take(_pageSize).ToList());
+            AnimalList3.AddRange(_allAnimals.Skip(AnimalList.Count).Take(_pageSize).ToList());
             //AnimalList2[1].AddRange(_allAnimals.Skip(AnimalList2[1].Count)
             //    .Take(_pageSize).ToList());
 

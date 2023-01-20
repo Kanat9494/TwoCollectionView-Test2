@@ -10,433 +10,72 @@
         <viewModel:AnimalListViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout>
         <CollectionView
-            ItemsSource="{Binding AnimalList}">
+            ItemsSource="{Binding AnimalList3}"
+            VerticalOptions="FillAndExpand"
+            RemainingItemsThreshold="1"
+                                RemainingItemsThresholdReachedCommand="{Binding Path=LoadMoreDataCommand,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}">
             <CollectionView.Header>
                 
                     <StackLayout
                         >
+
+                    <CollectionView
+                        ItemsSource="{Binding AnimalList}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Horizontal"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate
+                                x:DataType="model:EntryDetails">
+                                <Label
+                                    Text="{Binding Description}"
+                                    Margin="10"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        
+                        
+                    </CollectionView>
                     
                     
-                    <Label
-                                HorizontalOptions="Start"
-                                Text="Testing scroll view"
-                            />
-                    <ScrollView
-                        VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand">
-                        <StackLayout
-                            Orientation="Horizontal"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            >
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-
-                            <Border
-                            Stroke="Transparent"
-                            StrokeThickness="0"
-                                Margin="10">
-                                <Label
-                                Text="Scroll view"/>
-                            </Border>
-                        </StackLayout>
-                    </ScrollView>
                 </StackLayout>
             </CollectionView.Header>
+
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout
+                HorizontalItemSpacing="5"
+                VerticalItemSpacing="5"
+                Span="2"
+                Orientation="Vertical"/>
+        </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate
+                    x:DataType="model:EntryDetails">
+                    <StackLayout>
+                        <Label
+                            Text="{Binding API}"/>
+                        <Label
+                            Text="{Binding Description}"/>
+
+                        <Label
+                            Text="{Binding Category}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <!--<CollectionView.Footer>
+                <StackLayout>
+                    <ActivityIndicator 
+                    IsRunning="{Binding IsLoading}" 
+                    IsVisible="{Binding IsLoading}"
+                    HeightRequest="50"         
+                    WidthRequest="50"
+                    HorizontalOptions="Center"/>
+                </StackLayout>
+            </CollectionView.Footer>-->
         </CollectionView>
-    </StackLayout>
     
-    <!--<StackLayout>
-        <CollectionView
-            ItemsSource="{Binding ParentTestList}"
-            VerticalOptions="FillAndExpand">
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="model:ParentEntryDetails">
-                    <StackLayout>
-                        <StackLayout
-                                HeightRequest="100">
-                            <CollectionView
-                                    ItemsSource="{Binding ParentList}"
-                                    VerticalOptions="FillAndExpand"
-                                    >
-                                <CollectionView.ItemsLayout>
-                                    <LinearItemsLayout ItemSpacing="16" Orientation="Horizontal" />
-                                </CollectionView.ItemsLayout>
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate
-                                            x:DataType="model:EntryDetails">
-                                        <StackLayout>
-                                            <Label
-                                                    Text="{Binding API}"/>
-                                            <Label
-                                                    Text="{Binding Description}"/>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                                --><!--<CollectionView.Footer>
-                                    <StackLayout>
-                                        <ActivityIndicator 
-                        IsRunning="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}" 
-                        IsVisible="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
-                        HeightRequest="50"         
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                                    </StackLayout>
-                                </CollectionView.Footer>--><!--
-                            </CollectionView>
-                        </StackLayout>
-
-                        <StackLayout>
-                            <CollectionView
-                                ItemsSource="{Binding ParentList2}"
-                                VerticalOptions="FillAndExpand"
-                                RemainingItemsThreshold="1"
-                                RemainingItemsThresholdReachedCommand="{Binding Path=LoadMoreDataCommand,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
-                                >
-                                <CollectionView.ItemsLayout>
-                                    <GridItemsLayout
-                                        Orientation="Vertical"
-                                        HorizontalItemSpacing="5"
-                                        VerticalItemSpacing="5"
-                                        Span="2"/>
-                                </CollectionView.ItemsLayout>
-                                --><!--<CollectionView.ItemsLayout>
-                                    <LinearItemsLayout Orientation="Vertical" />
-                                </CollectionView.ItemsLayout>--><!--
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate
-                                                x:DataType="model:EntryDetails">
-                                        <StackLayout>
-                                            <Label
-                                                        Text="{Binding API}"/>
-                                            <Label
-                                                        Text="{Binding Description}"/>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-
-                                <CollectionView.Footer>
-                                    <StackLayout>
-                                        <ActivityIndicator 
-                        IsRunning="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}" 
-                        IsVisible="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
-                        HeightRequest="50"         
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                                    </StackLayout>
-                                </CollectionView.Footer>
-                            </CollectionView>
-                        </StackLayout>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>-->
-
-    <!--<Grid>
-        <CollectionView
-            ItemsSource="{Binding AnimalList2}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                   >
-                    <StackLayout>
-                        <CollectionView
-                            ItemsSource="{Binding AnimalList}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate
-                                    x:DataType="model:EntryDetails">
-                                    <StackLayout>
-                                        <Label
-                                            Text="{Binding API}"/>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout> 
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>-->
-    <!--<Grid>
-            <Grid.RowDefinitions
-                >
-                <RowDefinition
-                    Height="200"/>
-                <RowDefinition
-                    Height="*"/>
-            </Grid.RowDefinitions>
-
-            <StackLayout
-                Orientation="Horizontal"
-                Grid.Row="0"
-                WidthRequest="200">
-                <CollectionView
-                ItemsSource="{Binding AnimalList}"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                RemainingItemsThreshold="1"
-                RemainingItemsThresholdReachedCommand="{Binding LoadMoreDataCommand}"
-                >
-                    <CollectionView.Header>
-                        <StackLayout>
-                            <ActivityIndicator 
-                        IsRunning="{Binding IsBusy}" 
-                        IsVisible="{Binding IsBusy}"
-                        HeightRequest="50"
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </CollectionView.Header>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:EntryDetails">
-                            <StackLayout Padding="10">
-
-
-                                <Label Grid.Column="0"
-                                   Grid.Row="0"
-                       Text="{Binding Category}"
-                       FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" />
-                                <Label Grid.Row="0"
-                       Grid.Column="1"
-                       Text="{Binding Description}"
-                       LineBreakMode="TailTruncation"
-                       FontAttributes="Italic"
-                       VerticalOptions="End" />
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-
-                    <CollectionView.Footer>
-                        <StackLayout>
-                            <ActivityIndicator 
-                        IsRunning="{Binding IsLoading}" 
-                        IsVisible="{Binding IsLoading}"
-                        HeightRequest="50"         
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </CollectionView.Footer>
-                </CollectionView>
-            </StackLayout>
-
-            <StackLayout
-            Orientation="Vertical"
-            Grid.Row="1">
-                <CollectionView
-                    ItemsSource="{Binding AnimalList}"
-                    VerticalOptions="FillAndExpand"
-                    RemainingItemsThreshold="1"
-                    RemainingItemsThresholdReachedCommand="{Binding LoadMoreDataCommand}">
-                    <CollectionView.Header>
-                        <StackLayout>
-                            <ActivityIndicator 
-                        IsRunning="{Binding IsBusy}" 
-                        IsVisible="{Binding IsBusy}"
-                        HeightRequest="50"
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </CollectionView.Header>
-
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        Orientation="Vertical"
-                        HorizontalItemSpacing="5"
-                        VerticalItemSpacing="5"
-                        Span="2"/>
-                </CollectionView.ItemsLayout>
-                    
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:EntryDetails">
-                            <StackLayout>
-                                <Label Text="{Binding API}" FontSize="20"/>
-                                <Label Text="{Binding Category}" FontSize="20"/>
-                                <Label Text="{Binding Description}" FontSize="20"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                    <CollectionView.Footer>
-                        <StackLayout>
-                            <ActivityIndicator 
-                        IsRunning="{Binding IsLoading}" 
-                        IsVisible="{Binding IsLoading}"
-                        HeightRequest="50"         
-                        WidthRequest="50"
-                        HorizontalOptions="Center"/>
-                        </StackLayout>
-                    </CollectionView.Footer>
-                </CollectionView>
-            </StackLayout>
-        </Grid>-->
-
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <CollectionView x:Name="verticalCollectionView" 
-                    ItemsSource="{Binding AnimalList}"
-                    Grid.Row="0">
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate
-                    >
-                    <StackLayout
-                        >
-                        <Label Text="{Binding Category}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        
-        <CollectionView x:Name="horizontalCollectionView" 
-                    ItemsSource="{Binding AnimalList}"
-                    Grid.Row="1">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout 
-                    Orientation="Vertical"
-                    HorizontalItemSpacing="5"
-                    VerticalItemSpacing="5"
-                    Span="2"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Category}" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Grid>-->
 </ContentPage>
