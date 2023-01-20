@@ -15,24 +15,23 @@
             ItemsSource="{Binding AnimalList}">
             <CollectionView.Header>
                 
-                    <ScrollView
-                        Orientation="Horizontal"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalScrollBarVisibility="Never">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                            <RowDefinition Height="60"/>
-
-                        </Grid.RowDefinitions>
-                        <Label
+                    <StackLayout
+                        >
+                    
+                    
+                    <Label
                                 HorizontalOptions="Start"
                                 Text="Testing scroll view"
-                            Grid.Row="0"/>
+                            />
+                    <ScrollView
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand">
                         <StackLayout
                             Orientation="Horizontal"
-                            Grid.Row="1">
-                            
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            >
+
                             <Border
                             Stroke="Transparent"
                             StrokeThickness="0"
@@ -169,8 +168,8 @@
                                 Text="Scroll view"/>
                             </Border>
                         </StackLayout>
-                    </Grid>
                     </ScrollView>
+                </StackLayout>
             </CollectionView.Header>
         </CollectionView>
     </StackLayout>
