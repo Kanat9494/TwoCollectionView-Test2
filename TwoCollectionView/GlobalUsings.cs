@@ -7,4 +7,5 @@ global using TwoCollectionView.Services;
 global using System.Collections.ObjectModel;
 global using Microsoft.Toolkit.Mvvm.Input;
 global using MvvmHelpers;
+//global using DevExpress.Maui;
 
