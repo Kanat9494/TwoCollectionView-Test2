@@ -10,36 +10,21 @@
     <ContentPage.BindingContext>
         <viewModel:AnimalListViewModel />
     </ContentPage.BindingContext>
+    
+
 
     <dxcv:DXCollectionView
         ItemsSource="{Binding AnimalList3}"
+        IsLoadMoreEnabled="True"
         IsScrollBarVisible="False"
+        IsRefreshing="{Binding Path=IsLoading, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}, Mode=TwoWay}"
+        LoadMoreCommand="{Binding Path=LoadMoreDataCommand, Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
+
         >
         <dxcv:DXCollectionView.GroupDescription>
             <dxcv:GroupDescription FieldName="Name" GroupInterval="Alphabetical"/>
         </dxcv:DXCollectionView.GroupDescription>
-        <!--<dxcv:DXCollectionView.GroupHeaderTemplate>
-            <DataTemplate>
-                <StackLayout
-                    HeightRequest="60"
-                    Orientation="Horizontal">
-                    <dxcv:DXCollectionView
-                    Orientation="Horizontal"
-                    ItemsSource="{Binding AnimalList}"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="Fill">
-                        <dxcv:DXCollectionView.ItemTemplate>
-                            <DataTemplate
-                            x:DataType="model:EntryDetails">
-                                <Label
-                                Text="{Binding Description}"/>
-                            </DataTemplate>
-                        </dxcv:DXCollectionView.ItemTemplate>
-                    </dxcv:DXCollectionView>
-                </StackLayout>
-
-            </DataTemplate>
-        </dxcv:DXCollectionView.GroupHeaderTemplate>-->
+        
 
         <dxcv:DXCollectionView.ItemTemplate
             >
@@ -47,24 +32,17 @@
                 x:DataType="model:EntryDetails">
                 <StackLayout
                     HeightRequest="70">
-                    <!--<Label
+                    <Label
                         Text="{Binding API}"/>
                     <Label
                         Text="{Binding Description}"/>
 
                     <Label
-                        Text="{Binding Category}"/>-->
+                        Text="{Binding Category}"/>
 
-                    <dxcv:DXCollectionView
-                        ItemsSource="{Binding Path=AnimalList,Source={RelativeSource AncestorType={x:Type viewModel:AnimalListViewModel}}}"
-                        Orientation="Horizontal">
-                        <dxcv:DXCollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Label
-                                    Text="{Binding API}"/>
-                            </DataTemplate>
-                        </dxcv:DXCollectionView.ItemTemplate>
-                    </dxcv:DXCollectionView>
+                    <Label FontAttributes="Bold" FontSize="16" Text="Header content" IsVisible="{Binding Converter={StaticResource visibilityConverter}, ConverterParameter=Header}"/>
+                    <Label FontAttributes="Bold" FontSize="16" Text="Footer content" IsVisible="{Binding Converter={StaticResource visibilityConverter}, ConverterParameter=Footer}"/>
+                    <Label Text="{Binding}" IsVisible="{Binding Converter={StaticResource visibilityConverter}}"/>
                 </StackLayout>
             </DataTemplate>
         </dxcv:DXCollectionView.ItemTemplate>

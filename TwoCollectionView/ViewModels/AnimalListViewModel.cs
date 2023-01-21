@@ -1,4 +1,6 @@
-﻿using MvvmHelpers;
+﻿using DevExpress.Maui.CollectionView;
+using MvvmHelpers;
+using System.Globalization;
 using ObservableObject = Microsoft.Toolkit.Mvvm.ComponentModel.ObservableObject;
 
 namespace TwoCollectionView.ViewModels;
@@ -24,6 +26,7 @@ public partial class AnimalListViewModel : ObservableObject
     [ObservableProperty]
     private bool _isLoading;
 
+
     public AnimalListViewModel() { }
     public AnimalListViewModel(AnimalService animalService)
     {
@@ -34,10 +37,16 @@ public partial class AnimalListViewModel : ObservableObject
         //AnimalList2.Add(AnimalList);
         //AnimalList2.Add(AnimalList);
 
+        //LoadMoreCommand = new Command(ExecuteLoadMoreCommand);
+
 
 
         GetAnimalList();
     }
+
+    
+
+    
     private void GetAnimalList()
     {
         AnimalList.Clear();
@@ -52,7 +61,7 @@ public partial class AnimalListViewModel : ObservableObject
             _allAnimals = await _animalService.GetAnimalList();
 
             App.Current.Dispatcher.Dispatch(() =>
-            {
+             {
                 AnimalList.ReplaceRange(_allAnimals.Take(_pageSize).ToList());
                 AnimalList3.ReplaceRange(_allAnimals.Take(_pageSize).ToList());
 
@@ -99,17 +108,59 @@ public partial class AnimalListViewModel : ObservableObject
 
         if (_allAnimals?.Count > 0)
         {
-            IsLoading = true;
+            //IsLoading = true;
             await Task.Delay(2000);
             AnimalList3.AddRange(_allAnimals.Skip(AnimalList.Count).Take(_pageSize).ToList());
             //AnimalList2[1].AddRange(_allAnimals.Skip(AnimalList2[1].Count)
             //    .Take(_pageSize).ToList());
 
-            ParentTestList[0].ParentList2.AddRange(_allAnimals
-                .Skip(ParentTestList[0].ParentList2.Count)
-                .Take(_pageSize).ToList());
+            //ParentTestList[0].ParentList2.AddRange(_allAnimals
+            //    .Skip(ParentTestList[0].ParentList2.Count)
+            //    .Take(_pageSize).ToList());
 
             IsLoading = false;
         }
     }
+
+
 }
+
+public class Converter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    {
+        var result = new List<object>();
+        result.Add(new Header());
+        result.AddRange(value as IEnumerable<object>);
+        result.Add(new Footer());
+        return result;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class CustomVisibilityConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var val = parameter as string;
+        switch (val)
+        {
+            case "Header": return value is Header;
+            case "Footer": return value is Footer;
+            default:
+                return value is string;
+        }
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class Header { }
+public class Footer { }
